@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Notification;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -34,6 +35,16 @@ class AppFixtures extends Fixture
         $admin->setPassword($adminPassword);
 
         $manager->persist($admin);
+
+        // Add notifications
+        for ($i = 1; $i < 10; $i++) {
+            $notification = new Notification();
+            $notification->setHeader('Header '.$i);
+            $notification->setText('Text '.$i);
+            $manager->persist($notification);
+        }
+
+
         $manager->flush();
     }
 }
