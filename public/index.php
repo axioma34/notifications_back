@@ -2,7 +2,7 @@
 
 use App\Kernel;
 
-header("Access-Control-Allow-Origin: http://localhost:8080");
+header("Access-Control-Allow-Origin: http://localhost:8081");
 header('Access-Control-Allow-Credentials: true');
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, DELETE");
 header("Access-Control-Allow-Headers: X-AUTH-TOKEN, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");

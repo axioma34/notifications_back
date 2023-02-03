@@ -1,9 +1,31 @@
 version: '3'
 services:
+  nginx:
+    container_name: nginx
+    image: nginx:stable-alpine
+    ports:
+      - '8080:80'
+    volumes:
+      - ./:/var/www/
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - api
+      - db
   db:
     image: mysql:5.7
     container_name: test_db
+    platform: linux/amd64
     environment:
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - 3306:3306
+      - "3306:3306"
+  api:
+    build:
+      context: .
+    image: api
+    container_name: test_api
+    links:
+      - db
+    depends_on:
+      - db
+    restart: on-failure
