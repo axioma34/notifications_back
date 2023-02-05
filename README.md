@@ -1,5 +1,5 @@
 # notifications_back
-Test task backend
+Notifications server side
 ## Start
 To start project use ```docker-compose up -d ```.
 After containers pulled and test database will create with users and some test notifications
